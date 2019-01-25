@@ -72,9 +72,9 @@ crashlytics-build.properties
 
 # JetBrains
 .idea
-Assets/Plugins/Editor/JetBrains
+Assets/Plugins/Editor/JetBrains*
 
-# Ignore Simple scene for testing proposes 
+# Ignore Simple scene for testing proposes
 Assets/Scenes/SampleScene.*
 
 .collabignore
