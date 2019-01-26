@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 224127787576443754}
   - component: {fileID: 222795462660184026}
   - component: {fileID: 114287881745651736}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,9 @@ GameObject:
   - component: {fileID: 61019055439988962}
   - component: {fileID: 114688780199699598}
   - component: {fileID: 95347299115814958}
-  m_Layer: 0
+  - component: {fileID: 114796767427359664}
+  - component: {fileID: 50334365955098100}
+  m_Layer: 8
   m_Name: BallEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +60,7 @@ GameObject:
   - component: {fileID: 223125335444316742}
   - component: {fileID: 114882540914092364}
   - component: {fileID: 114992532988082480}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,6 +81,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50334365955098100
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1166095464461976}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!61 &61019055439988962
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -102,7 +124,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.56, y: 2.56}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!95 &95347299115814958
 Animator:
@@ -148,7 +170,7 @@ MonoBehaviour:
   m_FillMethod: 1
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillOrigin: 1
 --- !u!114 &114688780199699598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -161,8 +183,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Parentpath: {fileID: 0}
-  healthUI: {fileID: 0}
+  health: 100
+  healthUI: {fileID: 114287881745651736}
   speed: 0
+--- !u!114 &114796767427359664
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1166095464461976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c6ea67a67ac2d347a95343da3f7dd03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114882540914092364
 MonoBehaviour:
   m_ObjectHideFlags: 1

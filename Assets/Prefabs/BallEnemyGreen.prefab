@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 223379559828116118}
   - component: {fileID: 114069300085252208}
   - component: {fileID: 114337175078538116}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,9 @@ GameObject:
   - component: {fileID: 61143411942866862}
   - component: {fileID: 114639744468115982}
   - component: {fileID: 95510149333636902}
-  m_Layer: 0
+  - component: {fileID: 114363511995301400}
+  - component: {fileID: 50180420216959932}
+  m_Layer: 8
   m_Name: BallEnemyGreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +60,7 @@ GameObject:
   - component: {fileID: 224515786757095850}
   - component: {fileID: 222502590960356456}
   - component: {fileID: 114584192898656312}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,6 +81,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50180420216959932
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1524013658936502}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!61 &61143411942866862
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -102,7 +124,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.56, y: 2.56}
+  m_Size: {x: 1.024, y: 1.024}
   m_EdgeRadius: 0
 --- !u!95 &95510149333636902
 Animator:
@@ -159,6 +181,17 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114363511995301400
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1524013658936502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c6ea67a67ac2d347a95343da3f7dd03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114584192898656312
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -185,7 +218,7 @@ MonoBehaviour:
   m_FillMethod: 1
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillOrigin: 1
 --- !u!114 &114639744468115982
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -198,7 +231,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Parentpath: {fileID: 0}
-  healthUI: {fileID: 0}
+  health: 100
+  healthUI: {fileID: 114584192898656312}
   speed: 0
 --- !u!212 &212258337283558030
 SpriteRenderer:

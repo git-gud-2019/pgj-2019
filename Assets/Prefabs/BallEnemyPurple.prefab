@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 224390274222409124}
   - component: {fileID: 222306250563809494}
   - component: {fileID: 114841984531537834}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 223934040856457376}
   - component: {fileID: 114424024674823544}
   - component: {fileID: 114395846641874130}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,9 @@ GameObject:
   - component: {fileID: 61049985273935208}
   - component: {fileID: 114019269233461836}
   - component: {fileID: 95046245745425732}
-  m_Layer: 0
+  - component: {fileID: 114362886270455932}
+  - component: {fileID: 50433149999114032}
+  m_Layer: 8
   m_Name: BallEnemyPurple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,6 +81,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50433149999114032
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1161924950595356}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!61 &61049985273935208
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -102,7 +124,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.56, y: 2.56}
+  m_Size: {x: 1.024, y: 1.024}
   m_EdgeRadius: 0
 --- !u!95 &95046245745425732
 Animator:
@@ -134,8 +156,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Parentpath: {fileID: 0}
-  healthUI: {fileID: 0}
+  health: 100
+  healthUI: {fileID: 114841984531537834}
   speed: 0
+--- !u!114 &114362886270455932
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1161924950595356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c6ea67a67ac2d347a95343da3f7dd03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114395846641874130
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -199,7 +233,7 @@ MonoBehaviour:
   m_FillMethod: 1
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillOrigin: 1
 --- !u!212 &212294886498333964
 SpriteRenderer:
   m_ObjectHideFlags: 1

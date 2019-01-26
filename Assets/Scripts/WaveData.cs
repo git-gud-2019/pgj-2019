@@ -13,7 +13,6 @@ public class WaveData : ScriptableObject {
     private List<GameObject> path;
     private GameObject spawner;
 
-
     public IEnumerator Wave (float timeBetweenWaves, int waveCount)
     {
         pathParent = GameObject.FindGameObjectWithTag("Path");
@@ -23,21 +22,28 @@ public class WaveData : ScriptableObject {
 
         while (true)
         {
-            for (var i = 0; i < spawner.GetComponent<EnemyWaves>().enemyPerWave; i++)
+            if (spawner.GetComponent<EnemyWaves>().enemiesAlive == 0)
             {
-                var enemyGO = enemies[Random.Range(0, 7)];
-                var spawnedEnemy = Instantiate(enemyGO, spawner.transform.position, Quaternion.identity);
-                spawnedEnemy.GetComponent<Enemy>().Parentpath = pathParent;
-                spawnedEnemy.GetComponent<Enemy>().speed = 3f;
-                yield return new WaitForSeconds(spawnInterval);
+                for (var i = 0; i < spawner.GetComponent<EnemyWaves>().enemyPerWave; i++)
+                {
+                    var enemyGO = enemies[Random.Range(0, 7)];
+                    var spawnedEnemy = Instantiate(enemyGO, spawner.transform.position, Quaternion.identity);
+                    spawnedEnemy.GetComponent<Enemy>().Parentpath = pathParent;
+                    spawnedEnemy.GetComponent<Enemy>().speed = 3f;
+                    spawner.GetComponent<EnemyWaves>().enemiesAlive++;
+                    yield return new WaitForSeconds(spawnInterval);
+                }
+
+                spawner.GetComponent<EnemyWaves>().enemyPerWave++;
+                currentWave++;
+                Debug.Log("Wave: " + currentWave + " complete.");
             }
-            spawner.GetComponent<EnemyWaves>().enemyPerWave++;
-            currentWave++;
+            
             if (currentWave == waveCount)
             {
+                Debug.Log("Level complete.");
                 break;
             }
-            Debug.Log("wave: " + currentWave + " complete");
             yield return new WaitForSeconds(timeBetweenWaves);
         }
     }
