@@ -531,7 +531,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d32b356971caa14db6e16a2b2bc6e8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 0
+  CurrentState: 0
   Coins: 10
   Health: 5
   HamburgersCount: 5
