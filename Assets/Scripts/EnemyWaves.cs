@@ -8,17 +8,20 @@ public class EnemyWaves : MonoBehaviour {
     private IEnumerable waveCoroutine;
 
     public int enemyPerWave;
-    public int waveCount;
 
     public int enemiesAlive = 0;
     
 
-    void Start () {
+    public void StartWave(int waveCount, int enemiesPerWave)
+    {
+        Debug.Log("StartWave");
+        enemyPerWave = enemiesPerWave;
         StartCoroutine(waveData.Wave(waveData.timeBetweenWaves, waveCount));
-	}
-	
-	void Update () {
+    }
 
-	}
+    public void WaveCompleted()
+    {
+
+    }
 
 }
