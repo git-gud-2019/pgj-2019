@@ -22,23 +22,14 @@ public class Enemy : MonoBehaviour {
         Node startNode = grid.NodeFromWorldPoint(startPos);
         Node targetNode = grid.NodeFromWorldPoint(targetPos);
 
-        var openSet = new List<Node>();
+        var openSet = new Heap<Node>(grid.MaxSize);
         var closedSet = new HashSet<Node>();
         openSet.Add(startNode);
 
         while (openSet.Count > 0)
         {
-            Node node = openSet[0];
-            for (var i = 1; i < openSet.Count; i++)
-            {
-                if (openSet[i].FCost < node.FCost || openSet[i].FCost == node.FCost)
-                {
-                    if (openSet[i].hCost < node.hCost)
-                        node = openSet[i];
-                }
-            }
-
-            openSet.Remove(node);
+            Node node = openSet.RemoveFirst();
+            
             closedSet.Add(node);
 
             if (node == targetNode)
