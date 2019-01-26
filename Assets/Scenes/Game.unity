@@ -150,7 +150,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4685873142918522, guid: 2a626e01a49f9f349bc3d2a9ba2b7af9, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a626e01a49f9f349bc3d2a9ba2b7af9, type: 2}
@@ -2164,7 +2164,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4685873142918522, guid: 2a626e01a49f9f349bc3d2a9ba2b7af9, type: 2}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a626e01a49f9f349bc3d2a9ba2b7af9, type: 2}
@@ -2901,7 +2901,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 10
+  far clip plane: 100
   field of view: 60
   orthographic: 1
   orthographic size: 5
@@ -5249,7 +5249,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4685873142918522, guid: 2a626e01a49f9f349bc3d2a9ba2b7af9, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a626e01a49f9f349bc3d2a9ba2b7af9, type: 2}
@@ -5581,8 +5581,8 @@ Transform:
   - {fileID: 922030255}
   - {fileID: 1587621298}
   - {fileID: 1927803}
-  - {fileID: 1926002081}
   - {fileID: 481198658}
+  - {fileID: 1926002081}
   - {fileID: 277466478}
   - {fileID: 1131817634}
   - {fileID: 776472733}
