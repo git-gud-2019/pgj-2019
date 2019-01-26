@@ -62,7 +62,7 @@ GameObject:
   - component: {fileID: 50433149999114032}
   m_Layer: 8
   m_Name: BallEnemyPurple
-  m_TagString: Untagged
+  m_TagString: EnemyFlipAll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -226,7 +226,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: d57d9840d89a6974db06dae0753399ba, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 44e39dd0a0294074594c28411a2626de, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
