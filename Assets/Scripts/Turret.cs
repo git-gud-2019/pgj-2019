@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
@@ -64,7 +62,7 @@ public class Turret : MonoBehaviour
         {
             lookRotationX = rotation.x * -1 + 90;
         }
-        transform.rotation = Quaternion.Euler(lookRotationX + 270, 270f, 90f);
+        transform.rotation = Quaternion.Euler(lookRotationX, 270f, 90f);
 
     }
 
