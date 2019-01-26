@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour
 
         if(health <= 0)
         {
-            GameObject.FindGameObjectWithTag("EnemySpawn").GetComponent<EnemyWaves>().enemiesAlive--;
+            GameObject.FindGameObjectWithTag("EnemySpawn").GetComponent<EnemyWaves>().KillEnemy();
             Destroy(gameObject);
         }
     }

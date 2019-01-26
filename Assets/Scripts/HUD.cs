@@ -16,7 +16,7 @@ public class HUD : MonoBehaviour, ClicableMapObject.ClicableMapObjectListener
         UNDER_ATTACK
     }
 
-    public State state = State.PREPARING;
+    public State CurrentState = State.PREPARING;
     public int Coins = 10;
     public int Health = 5;
 
@@ -37,7 +37,7 @@ public class HUD : MonoBehaviour, ClicableMapObject.ClicableMapObjectListener
     private static string TOWER_POSITION_TAG = "TowerPos";
     private static string TRAP_POSITION_TAG = "TrapPos";
 
-    private int waveNumber = 1;
+    private int waveNumber = 0;
     private float timeToNextWave = 10;
 
     void Start()
@@ -68,10 +68,10 @@ public class HUD : MonoBehaviour, ClicableMapObject.ClicableMapObjectListener
 
     public void ChangeState(State state)
     {
+        CurrentState = state;
         switch (state)
         {
             case State.PREPARING:
-                enemyWaves.StartWave(3, 3);
                 BuildingsButton.SetActive(true);
                 waveNumber += 1;
                 timeToNextWave = 10;
@@ -87,14 +87,15 @@ public class HUD : MonoBehaviour, ClicableMapObject.ClicableMapObjectListener
                 TrapPositionsParent.SetActive(true);
                 break;
             case State.UNDER_ATTACK:
+                enemyWaves.StartWave(1 + waveNumber, 3, 5);
                 TowerPositionsParent.SetActive(false);
                 TrapPositionsParent.SetActive(false);
                 BuildingsButton.SetActive(false);
 
 
-                TimerText.text = string.Format("Wawe: {0}", waveNumber);
-                ChangeCoins(3);
-                ChangeState(State.PREPARING);
+                TimerText.text = string.Format("Wave: {0}", waveNumber);
+                //ChangeCoins(3);
+                //ChangeState(State.PREPARING);
                 BuildingsPanel.gameObject.SetActive(false);
 
                 break;
@@ -104,7 +105,7 @@ public class HUD : MonoBehaviour, ClicableMapObject.ClicableMapObjectListener
 
     void LateUpdate()
     {
-        if (state != State.UNDER_ATTACK)
+        if (CurrentState != State.UNDER_ATTACK)
         {
             var minutes = timeToNextWave / 60; //Divide the guiTime by sixty to get the minutes.
             var seconds = timeToNextWave % 60; //Use the euclidean division for the seconds.
@@ -159,13 +160,13 @@ public class HUD : MonoBehaviour, ClicableMapObject.ClicableMapObjectListener
         TowerPositionsParent.SetActive(false);
         TrapPositionsParent.SetActive(false);
 
-        if (state == State.BUILD_TRAP && obj.tag == TRAP_POSITION_TAG)
+        if (CurrentState == State.BUILD_TRAP && obj.tag == TRAP_POSITION_TAG)
         {
             ChangeCoins(-TRAP_PRICE);
 
             //build prap on position
         }
-        else if (state == State.BUILD_TOWER && obj.tag == TOWER_POSITION_TAG)
+        else if (CurrentState == State.BUILD_TOWER && obj.tag == TOWER_POSITION_TAG)
         {
             ChangeCoins(-TOWER_PRICE);
         }

@@ -14,42 +14,50 @@ public class WaveData : ScriptableObject
     private List<GameObject> path;
     private GameObject spawner;
 
-    public IEnumerator Wave(float timeBetweenWaves, int waveCount)
+    private int enemiesAlive;
+    private int enemiesRemaining;
+
+    public IEnumerator Wave(int waveCount, int enemiesPerWave, float interval)
     {
+        enemiesAlive = 0;
+        enemiesRemaining = waveCount * enemiesPerWave;
+
         pathParent = GameObject.FindGameObjectWithTag("Path");
         spawner = GameObject.FindGameObjectWithTag("EnemySpawn");
 
         var currentWave = 0;
 
-        while (true)
-        {
-            for (var i = 0; i < spawner.GetComponent<EnemyWaves>().enemyPerWave; i++)
+        for(var j = 0; j < waveCount; j++) {
+
+            for (var i = 0; i < enemiesPerWave; i++)
             {
                 var enemyGO = enemies[Random.Range(0, 6)];
                 var spawnedEnemy = Instantiate(enemyGO, spawner.transform.position, Quaternion.identity);
                 spawnedEnemy.GetComponent<Enemy>().Parentpath = pathParent;
                 spawnedEnemy.GetComponent<Enemy>().speed = 3f;
-                spawner.GetComponent<EnemyWaves>().enemiesAlive++;
+                enemiesAlive++;
+                enemiesRemaining--;
                 yield return new WaitForSeconds(spawnInterval);
             }
 
-            spawner.GetComponent<EnemyWaves>().enemyPerWave++;
+            //spawner.GetComponent<EnemyWaves>().enemyPerWave++;
+
             currentWave++;
             Debug.Log("Wave: " + currentWave + " complete.");
 
-            if (spawner.GetComponent<EnemyWaves>().enemiesAlive == 0)
-            {
-                spawner.GetComponent<EnemyWaves>().WaveCompleted();
-            }
-
-            if (currentWave == waveCount)
-            {
-                spawner.GetComponent<EnemyWaves>().WaveCompleted();
-                Debug.Log("Level complete.");
-                break;
-            }
             yield return new WaitForSeconds(timeBetweenWaves);
         }
+    }
+
+    public bool KillEnemy()
+    {
+        enemiesAlive--;
+        Debug.Log("Live enemies" + enemiesAlive + " Remaining " + enemiesRemaining);
+        if (enemiesAlive <= 0 && enemiesRemaining <= 0)
+        {
+            spawner.GetComponent<EnemyWaves>().WaveCompleted();
+        }
+        return false;
     }
 
 }

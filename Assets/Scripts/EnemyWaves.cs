@@ -5,23 +5,26 @@ using UnityEngine;
 public class EnemyWaves : MonoBehaviour {
 
     public WaveData waveData;
+    public HUD hud;
     private IEnumerable waveCoroutine;
-
-    public int enemyPerWave;
-
-    public int enemiesAlive = 0;
     
 
-    public void StartWave(int waveCount, int enemiesPerWave)
+    public void StartWave(int waveCount, int enemiesPerWave, float interval)
     {
         Debug.Log("StartWave");
-        enemyPerWave = enemiesPerWave;
-        StartCoroutine(waveData.Wave(waveData.timeBetweenWaves, waveCount));
+        StartCoroutine(waveData.Wave(enemiesPerWave, waveCount, interval));
     }
 
     public void WaveCompleted()
     {
+        Debug.Log("Waves Done");
+        hud.ChangeState(HUD.State.PREPARING);
+    }
 
+    public void KillEnemy()
+    {
+        Debug.Log("Kill Enemy");
+        waveData.KillEnemy();
     }
 
 }

@@ -32,12 +32,14 @@ public class ClicableMapObject : MonoBehaviour
 
     private void OnMouseEnter()
     {
+        Debug.Log("Mouse Enter");
         SetAlpha(1f);
         gameObject.GetComponent<SpriteRenderer>().sprite = sprites[1];
     }
 
     private void OnMouseExit()
     {
+        Debug.Log("Mouse Exit");
         SetAlpha(0.22f);
         gameObject.GetComponent<SpriteRenderer>().sprite = sprites[0];
 
