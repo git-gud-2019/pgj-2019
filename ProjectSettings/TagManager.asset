@@ -49,3 +49,12 @@ TagManager:
   - name: Environment
     uniqueID: 2052553443
     locked: 0
+  - name: Tent
+    uniqueID: 1191738619
+    locked: 0
+  - name: Enemy
+    uniqueID: 1457621459
+    locked: 0
+  - name: Smoke
+    uniqueID: 3214959815
+    locked: 0
