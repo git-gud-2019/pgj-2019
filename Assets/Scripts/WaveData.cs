@@ -8,33 +8,36 @@ public class WaveData : ScriptableObject {
     [SerializeField]
     public Transform[] enemies;
     public float spawnInterval;
-    public int enemyPerWave;
+    public float timeBetweenWaves;
     private GameObject pathParent;
     private List<GameObject> path;
+    private GameObject spawner;
 
 
     public IEnumerator Wave (float timeBetweenWaves, int waveCount)
     {
         pathParent = GameObject.FindGameObjectWithTag("Path");
+        spawner = GameObject.FindGameObjectWithTag("EnemySpawn");
+
+        var currentWave = 0;
 
         while (true)
         {
-            var currentWave = 0;
-
-            for (var i = 0; i < enemyPerWave; i++)
+            for (var i = 0; i < spawner.GetComponent<EnemyWaves>().enemyPerWave; i++)
             {
                 var enemyGO = enemies[Random.Range(0, 2)];
-                var spawnedEnemy = Instantiate(enemyGO, GameObject.FindGameObjectWithTag("EnemySpawn").transform.position, Quaternion.identity);
+                var spawnedEnemy = Instantiate(enemyGO, spawner.transform.position, Quaternion.identity);
                 spawnedEnemy.GetComponent<Enemy>().Parentpath = pathParent;
                 spawnedEnemy.GetComponent<Enemy>().speed = 3f;
                 yield return new WaitForSeconds(spawnInterval);
             }
-            enemyPerWave++;
+            spawner.GetComponent<EnemyWaves>().enemyPerWave++;
             currentWave++;
             if (currentWave == waveCount)
             {
                 break;
             }
+            Debug.Log("wave: " + currentWave + " complete");
             yield return new WaitForSeconds(timeBetweenWaves);
         }
     }
