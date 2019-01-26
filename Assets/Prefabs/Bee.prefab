@@ -203,7 +203,7 @@ MonoBehaviour:
   health: 120
   healthUI: {fileID: 114419388637876948}
   speed: 0
-  enemyDamage: 0
+  enemyDamage: 30
 --- !u!114 &114675828936357366
 MonoBehaviour:
   m_ObjectHideFlags: 1

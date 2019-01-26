@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -33,6 +34,12 @@ public class Enemy : MonoBehaviour
         if(health <= 0)
         {
             GameObject.FindGameObjectWithTag("EnemySpawn").GetComponent<EnemyWaves>().KillEnemy();
+            Destroy(gameObject);
+        }
+
+        if (!path.Any())
+        {
+            var player = GameObject.Find("Main Camera").GetComponent<Player>().playerHealth -= enemyDamage;
             Destroy(gameObject);
         }
     }
