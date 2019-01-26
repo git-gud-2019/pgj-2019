@@ -39,29 +39,32 @@ public class Enemy : MonoBehaviour
     {
         if (path.Count > 0)
         {
-            if (transform.position.y == path[0].transform.position.y)
+            if (gameObject.CompareTag("EnemyFlipAll"))
             {
-                if (transform.position.x < path[0].transform.position.x)
+                if (transform.position.y == path[0].transform.position.y)
                 {
-                    transform.rotation = Quaternion.Euler(Vector3.forward * 270);
+
+                    if (transform.position.x < path[0].transform.position.x)
+                    {
+                        transform.rotation = Quaternion.Euler(Vector3.forward * 270);
+                    }
+                    else
+                    {
+                        transform.rotation = Quaternion.Euler(Vector3.forward * 90);
+                    }
                 }
                 else
                 {
-                    transform.rotation = Quaternion.Euler(Vector3.forward * 90);
+                    if (transform.position.y < path[0].transform.position.y)
+                    {
+                        transform.rotation = Quaternion.Euler(Vector3.forward * 0);
+                    }
+                    else
+                    {
+                        transform.rotation = Quaternion.Euler(Vector3.forward * 180);
+                    }
                 }
             }
-            else
-            {
-                if (transform.position.y < path[0].transform.position.y)
-                {
-                    transform.rotation = Quaternion.Euler(Vector3.forward * 0);
-                }
-                else
-                {
-                    transform.rotation = Quaternion.Euler(Vector3.forward * 180);
-                }
-            }
-            
             transform.position = Vector2.MoveTowards(transform.position, path[0].transform.position, speed * Time.deltaTime);
             if (transform.position == path[0].transform.position)
             {
