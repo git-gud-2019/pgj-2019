@@ -25,6 +25,8 @@ public class HUD : MonoBehaviour, ClicableMapObject.ClicableMapObjectListener
     public GameObject TrapPositionsParent;
     public GameObject TowerPositionsParent;
 
+    public EnemyWaves enemyWaves;
+
     public GameObject BuildingsPanel;
     public GameObject BuildingsButton;
     public Text TimerText;
@@ -58,7 +60,10 @@ public class HUD : MonoBehaviour, ClicableMapObject.ClicableMapObjectListener
             child.SetListener(this);
         }
 
+
+
         ChangeState(State.PREPARING);
+
     }
 
     public void ChangeState(State state)
@@ -66,20 +71,27 @@ public class HUD : MonoBehaviour, ClicableMapObject.ClicableMapObjectListener
         switch (state)
         {
             case State.PREPARING:
+                enemyWaves.StartWave(3, 3);
+                BuildingsButton.SetActive(true);
                 waveNumber += 1;
                 timeToNextWave = 10;
 
                 break;
 
             case State.BUILD_TOWER:
-
+                TowerPositionsParent.SetActive(true);
                 break;
 
             case State.BUILD_TRAP:
 
+                TrapPositionsParent.SetActive(true);
                 break;
-
             case State.UNDER_ATTACK:
+                TowerPositionsParent.SetActive(false);
+                TrapPositionsParent.SetActive(false);
+                BuildingsButton.SetActive(false);
+
+
                 TimerText.text = string.Format("Wawe: {0}", waveNumber);
                 ChangeCoins(3);
                 ChangeState(State.PREPARING);
@@ -111,25 +123,24 @@ public class HUD : MonoBehaviour, ClicableMapObject.ClicableMapObjectListener
 
     public void Build(int buildingId)
     {
+        TowerPositionsParent.SetActive(false);
+        TrapPositionsParent.SetActive(false);
+
         switch (buildingId)
         {
             case 0:
-
-                if (Coins < TRAP_PRICE)
-                    break;
-                state = State.BUILD_TRAP;
+                if (Coins >= TRAP_PRICE)
+                    ChangeState(State.BUILD_TRAP);
                 ShowHideBuildings();
-          
+                TrapPositionsParent.SetActive(true);
                 break;
             case 1:
-                if (Coins < TOWER_PRICE)
-                    break; // not enought coins
-                state = State.BUILD_TOWER;
+                if (Coins >= TOWER_PRICE)
+                    ChangeState(State.BUILD_TOWER);
                 ShowHideBuildings();
+                TowerPositionsParent.SetActive(true);
                 break;
         }
-
-
     }
 
     public void ShowHideBuildings()
@@ -143,30 +154,20 @@ public class HUD : MonoBehaviour, ClicableMapObject.ClicableMapObjectListener
         CoinsText.text = Coins.ToString();
     }
 
-    public void OnClickPosition(Vector3 position, string tag)
+    public void BuildOnPosition(ClicableMapObject obj)
     {
-        if (tag == TRAP_POSITION_TAG && state == State.BUILD_TRAP) { 
-                ChangeCoins(-TRAP_PRICE);
-                //build prap on position
+        TowerPositionsParent.SetActive(false);
+        TrapPositionsParent.SetActive(false);
+
+        if (state == State.BUILD_TRAP && obj.tag == TRAP_POSITION_TAG)
+        {
+            ChangeCoins(-TRAP_PRICE);
+
+            //build prap on position
         }
-        else if (state == State.BUILD_TOWER && tag == TOWER_POSITION_TAG)
+        else if (state == State.BUILD_TOWER && obj.tag == TOWER_POSITION_TAG)
         {
             ChangeCoins(-TOWER_PRICE);
-        }
-
-    }
-
-    public void OnMouseOverPsition(Vector3 position, string tag)
-    {
-
-        Debug.Log("Position " + position + " tag: " + tag);
-        if (state == State.BUILD_TRAP && tag == TRAP_POSITION_TAG)
-        {
-            
-        }
-        else if (state == State.BUILD_TOWER && tag == TOWER_POSITION_TAG)
-        {
-            
         }
     }
 }

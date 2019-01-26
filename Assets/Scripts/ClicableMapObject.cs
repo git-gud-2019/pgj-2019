@@ -3,40 +3,49 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ClicableMapObject : MonoBehaviour, IPointerClickHandler
+public class ClicableMapObject : MonoBehaviour
 {
-
-    void OnClick()
-    {
-        Debug.Log("CLicked");
-    }
+    public Sprite[] sprites;
+    private Color color;
 
     private ClicableMapObjectListener listener;
 
     public interface ClicableMapObjectListener
     {
-        void OnClickPosition(Vector3 position, string tag);
-
-        void OnMouseOverPsition(Vector3 position, string tag);
+        void BuildOnPosition(ClicableMapObject obj);
     }
 
     public void SetListener(ClicableMapObjectListener listener)
     {
+        color = gameObject.GetComponent<SpriteRenderer>().color;
         this.listener = listener;
     }
 
     private void OnMouseDown()
     {
-        listener.OnClickPosition(transform.position, tag);
+        color.a = 0;
+        gameObject.GetComponent<SpriteRenderer>().color = color;
+
+        listener.BuildOnPosition(this);
+        Destroy(gameObject);
     }
 
-    private void OnMouseOver()
+    private void OnMouseEnter()
     {
-        listener.OnClickPosition(transform.position, tag);
+        SetAlpha(1f);
+        gameObject.GetComponent<SpriteRenderer>().sprite = sprites[1];
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    private void OnMouseExit()
     {
-        throw new System.NotImplementedException();
+        SetAlpha(0.22f);
+        gameObject.GetComponent<SpriteRenderer>().sprite = sprites[0];
+
+    }
+
+    private void SetAlpha(float alpha)
+    {
+        color.a = alpha;
+        gameObject.GetComponent<SpriteRenderer>().color = color;
     }
 }
