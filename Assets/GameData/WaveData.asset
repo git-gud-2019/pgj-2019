@@ -18,5 +18,7 @@ MonoBehaviour:
   - {fileID: 4034340189302952, guid: 0ae97f3720fa4f44e9b8a6edf4b822e9, type: 2}
   - {fileID: 4726373358306692, guid: 1b3f79db25b4b724c83d811fb6cccc13, type: 2}
   - {fileID: 4018745398821194, guid: 77185fbbff4076b4f82a873a8d326573, type: 2}
+  - {fileID: 4773301624611234, guid: 826e54e2248e2674ca69ec6e537503b1, type: 2}
+  - {fileID: 4629906164257802, guid: af53ba39d2949e843a7b24811cff7704, type: 2}
   spawnInterval: 1
   timeBetweenWaves: 3

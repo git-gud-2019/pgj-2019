@@ -31,7 +31,7 @@ public class WaveData : ScriptableObject
 
             for (var i = 0; i < enemiesPerWave; i++)
             {
-                var enemyGO = enemies[Random.Range(0, 6)];
+                var enemyGO = enemies[Random.Range(0, 8)];
                 var spawnedEnemy = Instantiate(enemyGO, spawner.transform.position, Quaternion.identity);
                 spawnedEnemy.GetComponent<Enemy>().Parentpath = pathParent;
                 spawnedEnemy.GetComponent<Enemy>().speed = 3f;
