@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public int health = 100;
     public Image healthUI;
     public float speed;
+    public int enemyDamage;
 
     private void Start()
     {
