@@ -537,6 +537,7 @@ MonoBehaviour:
   HamburgersCount: 5
   TrapPositionsParent: {fileID: 0}
   TowerPositionsParent: {fileID: 0}
+  enemyWaves: {fileID: 0}
   BuildingsPanel: {fileID: 1548869046645852}
   BuildingsButton: {fileID: 1402564232960692}
   TimerText: {fileID: 114800477469513912}
