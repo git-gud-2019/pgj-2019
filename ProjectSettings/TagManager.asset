@@ -9,6 +9,9 @@ TagManager:
   - EnemyFlipAll
   - EnemySpawn
   - Path
+  - TowerPos
+  - TrapPos
+  - Enemy
   layers:
   - Default
   - TransparentFX
