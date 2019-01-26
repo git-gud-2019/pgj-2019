@@ -5,12 +5,19 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-    public List<GameObject> path;
+    public GameObject Parentpath;
+    List<GameObject> path;
     int health = 100;
     public Image healthUI;
+    public float speed;
 
     private void Start()
     {
+        path = new List<GameObject>();
+        foreach (Transform child in Parentpath.transform)
+        {
+            path.Add(child.gameObject);
+        }
         StartCoroutine(GoOnPath());
     }
 
@@ -54,9 +61,13 @@ public class Enemy : MonoBehaviour
                     transform.rotation = Quaternion.Euler(Vector3.forward * 180);
                 }
             }
-            transform.position = path[0].transform.position;
-            path.RemoveAt(0);
-            yield return new WaitForSecondsRealtime(0.2f);
+            
+            transform.position = Vector2.MoveTowards(transform.position, path[0].transform.position, speed * Time.deltaTime);
+            if (transform.position == path[0].transform.position)
+            {
+                path.RemoveAt(0);
+            }
+            yield return null;
             StartCoroutine(GoOnPath());
         }
     }
