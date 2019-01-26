@@ -80,7 +80,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprites:
   - {fileID: 21300000, guid: a2bb7cdb4c212fc4a82eeb4e0d9e4a76, type: 3}
-  - {fileID: 21300000, guid: 8835a6cbc2d966d4ca1a6f31c8036b2d, type: 3}
+  - {fileID: 21300000, guid: 446003561f039ef44b4061c3a5b85b23, type: 3}
 --- !u!212 &212692930909673406
 SpriteRenderer:
   m_ObjectHideFlags: 1
