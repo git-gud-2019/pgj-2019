@@ -12,12 +12,11 @@ MonoBehaviour:
   m_Name: WaveData
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 4320159733178746, guid: 6a5b98fab7551474982b7863d73eb3de, type: 2}
+  - {fileID: 4410621925839242, guid: 02c22d9cc67d27f4cba4951d3c8e7325, type: 2}
   - {fileID: 4009586507803772, guid: 8508fa1eee7cba64a9b55547a1594cf0, type: 2}
   - {fileID: 4495123721536410, guid: cd6ae4324cafa024795814d6bc703dcf, type: 2}
   - {fileID: 4034340189302952, guid: 0ae97f3720fa4f44e9b8a6edf4b822e9, type: 2}
   - {fileID: 4726373358306692, guid: 1b3f79db25b4b724c83d811fb6cccc13, type: 2}
   - {fileID: 4018745398821194, guid: 77185fbbff4076b4f82a873a8d326573, type: 2}
-  - {fileID: 4410621925839242, guid: 02c22d9cc67d27f4cba4951d3c8e7325, type: 2}
   spawnInterval: 1
   timeBetweenWaves: 3
