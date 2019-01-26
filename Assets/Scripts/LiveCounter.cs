@@ -3,11 +3,12 @@ using UnityEngine.UI;
 
 public class LiveCounter : MonoBehaviour
 {
-    public Image FoodPrefab;
-    public GameObject SpawnPoint;
-    private int Lives = 15;
 
-    // Use this for initialization
+    public Image TrapPrefab;
+    public GameObject SpawnPoint;
+
+    private static string HEALTH_TAG = "Lives";
+
     void Start()
     {
         InstantiateLives();
@@ -15,20 +16,22 @@ public class LiveCounter : MonoBehaviour
 
     private void InstantiateLives()
     {
-        float spaceMultiplier = 50f;
-        for (int i = 0; i < Lives; i++)
+        var hud = GetComponent<HUD>();
+
+        var spaceMultiplier = 50f;
+        for (var i = 0; i < hud.Health; i++)
         {
-            var live = Instantiate(FoodPrefab,
+            var trap = Instantiate(TrapPrefab,
                 new Vector3(SpawnPoint.transform.position.x + spaceMultiplier * i, SpawnPoint.transform.position.y,
                     0f), Quaternion.identity);
-            live.transform.SetParent(SpawnPoint.transform);
-            live.tag = "Lives";
+            trap.transform.SetParent(SpawnPoint.transform);
+            trap.tag = HEALTH_TAG;
         }
     }
 
     private void DestroyLives()
     {
-        var latestLive = GameObject.FindGameObjectsWithTag("Lives");
+        var latestLive = GameObject.FindGameObjectsWithTag(HEALTH_TAG);
         if (latestLive.Length > 0)
         {
             foreach (var live in latestLive)
@@ -38,15 +41,9 @@ public class LiveCounter : MonoBehaviour
         }
     }
 
-    public void ChangeLives(int change)
+    public void Refresh()
     {
-        Lives = Lives + change;
         DestroyLives();
         InstantiateLives();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
     }
 }
