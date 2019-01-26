@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
 {
     public GameObject Parentpath;
     List<GameObject> path;
-    int health = 100;
+    public int health = 100;
     public Image healthUI;
     public float speed;
 
@@ -31,6 +31,7 @@ public class Enemy : MonoBehaviour
 
         if(health <= 0)
         {
+            GameObject.FindGameObjectWithTag("EnemySpawn").GetComponent<EnemyWaves>().enemiesAlive--;
             Destroy(gameObject);
         }
     }

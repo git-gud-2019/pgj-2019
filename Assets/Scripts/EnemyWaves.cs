@@ -9,6 +9,8 @@ public class EnemyWaves : MonoBehaviour {
 
     public int enemyPerWave;
     public int waveCount;
+
+    public int enemiesAlive = 0;
     
 
     void Start () {
@@ -16,7 +18,7 @@ public class EnemyWaves : MonoBehaviour {
 	}
 	
 	void Update () {
-		
+
 	}
 
 }
