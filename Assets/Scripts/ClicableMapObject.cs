@@ -1,8 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class ClicableMapObject : MonoBehaviour {
+public class ClicableMapObject : MonoBehaviour, IPointerClickHandler
+{
+
+    void OnClick()
+    {
+        Debug.Log("CLicked");
+    }
 
     private ClicableMapObjectListener listener;
 
@@ -26,5 +33,10 @@ public class ClicableMapObject : MonoBehaviour {
     private void OnMouseOver()
     {
         listener.OnClickPosition(transform.position, tag);
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        throw new System.NotImplementedException();
     }
 }
