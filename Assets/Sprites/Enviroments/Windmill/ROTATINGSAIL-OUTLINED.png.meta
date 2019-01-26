@@ -1,7 +1,16 @@
 fileFormatVersion: 2
 guid: 7061acce53a711841aad34cb6d3de4b7
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: ROTATINGSAIL-OUTLINED_0
+    21300002: ROTATINGSAIL-OUTLINED_1
+    21300004: ROTATINGSAIL-OUTLINED_2
+    21300006: ROTATINGSAIL-OUTLINED_3
+    21300008: ROTATINGSAIL-OUTLINED_4
+    21300010: ROTATINGSAIL-OUTLINED_5
+    21300012: ROTATINGSAIL-OUTLINED_6
+    21300014: ROTATINGSAIL-OUTLINED_7
+    21300016: ROTATINGSAIL-OUTLINED_8
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -40,12 +49,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 400
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -69,9 +78,200 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: ROTATINGSAIL-OUTLINED_0
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 28
+        width: 1095
+        height: 1094
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 359987d426c044441930ec1bbdcb6c2a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ROTATINGSAIL-OUTLINED_1
+      rect:
+        serializedVersion: 2
+        x: 1185
+        y: 38
+        width: 1079
+        height: 1074
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6907c60a8272144d8396745804b7e6b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ROTATINGSAIL-OUTLINED_2
+      rect:
+        serializedVersion: 2
+        x: 2361
+        y: 63
+        width: 1027
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f56d9ead42cefd74699a40e7e435d11d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ROTATINGSAIL-OUTLINED_3
+      rect:
+        serializedVersion: 2
+        x: 3550
+        y: 98
+        width: 950
+        height: 953
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c1e25fc5f04f294aba45e4cf3db8667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ROTATINGSAIL-OUTLINED_4
+      rect:
+        serializedVersion: 2
+        x: 4670
+        y: 73
+        width: 1010
+        height: 999
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a36c42d737c48ea41b11f6ee1cd2b194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ROTATINGSAIL-OUTLINED_5
+      rect:
+        serializedVersion: 2
+        x: 5782
+        y: 28
+        width: 1088
+        height: 1089
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c2fb110690cdcd469d40d069514254f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ROTATINGSAIL-OUTLINED_6
+      rect:
+        serializedVersion: 2
+        x: 6906
+        y: 0
+        width: 1141
+        height: 1142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2806d79d81aa414fb0ad4dc07fb40b3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ROTATINGSAIL-OUTLINED_7
+      rect:
+        serializedVersion: 2
+        x: 8046
+        y: 0
+        width: 1159
+        height: 1150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c88b6ceaf8d9f647af26bb2ca91c63f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ROTATINGSAIL-OUTLINED_8
+      rect:
+        serializedVersion: 2
+        x: 9198
+        y: 0
+        width: 1152
+        height: 1147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e67ee67a56c2bc34282313ec83ff7174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
