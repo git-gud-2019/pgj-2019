@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Lives
   - Traps
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX
