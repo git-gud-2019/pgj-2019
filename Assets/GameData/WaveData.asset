@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Name: WaveData
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 0}
-  - {fileID: 0}
-  cicle: 3
-  spawnInterval: 2
+  - {fileID: 4320159733178746, guid: 6a5b98fab7551474982b7863d73eb3de, type: 2}
+  - {fileID: 4009586507803772, guid: 8508fa1eee7cba64a9b55547a1594cf0, type: 2}
+  timeBetweenWaves: 3
+  spawnInterval: 1.5
+  path: {fileID: 0}
