@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 50334365955098100}
   m_Layer: 8
   m_Name: BallEnemy
-  m_TagString: Untagged
+  m_TagString: EnemyFlipAll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,7 +74,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1166095464461976}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 5.098726, y: 0.4462911, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224607186150280290}
@@ -163,7 +163,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: d57d9840d89a6974db06dae0753399ba, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 44e39dd0a0294074594c28411a2626de, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
