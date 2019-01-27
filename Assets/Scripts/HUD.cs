@@ -16,9 +16,7 @@ public class HUD : MonoBehaviour, ClicableMapObject.ClicableMapObjectListener
 
     public State CurrentState = State.PREPARING;
     public int Coins = 10;
-    public int Health = 5;
-
-    public int HamburgersCount = 5;
+    public int Health = 100;
 
     public GameObject TrapPositionsParent;
     public GameObject TowerPositionsParent;
@@ -31,6 +29,7 @@ public class HUD : MonoBehaviour, ClicableMapObject.ClicableMapObjectListener
     public GameObject BuildingsButton;
     public Text TimerText;
     public Text CoinsText;
+    public Text HealthText;
 
 
 
@@ -42,12 +41,12 @@ public class HUD : MonoBehaviour, ClicableMapObject.ClicableMapObjectListener
 
     void Start()
     {
-        Coins = PlayerPrefs.GetInt("Coins", Coins);
-        Health = PlayerPrefs.GetInt("Health", Health);
+        //Coins = PlayerPrefs.GetInt("Coins", Coins);
+        //Health = PlayerPrefs.GetInt("Health", Health);
 
         // Update Coins and Lives
         CoinsText.text = Coins.ToString();
-        GetComponent<LiveCounter>().Refresh();
+        HealthText.text = Health.ToString();
 
         foreach (var child in TrapPositionsParent.GetComponentsInChildren<ClicableMapObject>())
         {
@@ -76,7 +75,7 @@ public class HUD : MonoBehaviour, ClicableMapObject.ClicableMapObjectListener
             case State.PREPARING:
                 BuildingsButton.SetActive(true);
                 waveNumber += 1;
-                timeToNextWave = 5;
+                timeToNextWave = 20;
 
                 break;
             case State.UNDER_ATTACK:
@@ -157,6 +156,11 @@ public class HUD : MonoBehaviour, ClicableMapObject.ClicableMapObjectListener
     {
         Coins += value;
         CoinsText.text = Coins.ToString();
+    }
+
+    public void UpdateHealth()
+    {
+        HealthText.text = Health.ToString();
     }
 
     public void BuildOnPosition(ClicableMapObject obj)
