@@ -50,7 +50,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 4bb31b31b68043748b83adb8cc4be647, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -150,7 +150,7 @@ MonoBehaviour:
   waveData: {fileID: 11400000, guid: 28329536ab00a284d85a1539c4ba3dc5, type: 2}
   hud: {fileID: 0}
   DieSounds:
-  - {fileID: 8300000, guid: 4bb31b31b68043748b83adb8cc4be647, type: 3}
   - {fileID: 8300000, guid: afcfd6af3d3e5624497ef2334137f1c7, type: 3}
   - {fileID: 8300000, guid: 8eef31a286173c44cb8cbdcd90e0cd66, type: 3}
   - {fileID: 8300000, guid: 3de0eaca79df14140b815456d8775ac3, type: 3}
+  - {fileID: 8300000, guid: 4bb31b31b68043748b83adb8cc4be647, type: 3}
