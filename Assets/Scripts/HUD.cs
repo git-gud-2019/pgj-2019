@@ -22,6 +22,7 @@ public class HUD : MonoBehaviour, ClicableMapObject.ClicableMapObjectListener
     public GameObject TowerPositionsParent;
 
     public GameObject TrapPrefab;
+    public GameObject TurretPrefab;
 
     public EnemyWaves enemyWaves;
 
@@ -184,6 +185,11 @@ public class HUD : MonoBehaviour, ClicableMapObject.ClicableMapObjectListener
                     break;
                 case TOWER_POSITION_TAG:
                     ChangeCoins(-TOWER_PRICE);
+                    Instantiate(
+                        TurretPrefab,
+                        new Vector3(obj.transform.position.x, obj.transform.position.y, 0f),
+                        Quaternion.identity
+                    );
                     break;
             }
 

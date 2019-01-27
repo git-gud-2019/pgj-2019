@@ -89,7 +89,6 @@ GameObject:
   - component: {fileID: 223554059776055282}
   - component: {fileID: 114509137408057502}
   - component: {fileID: 114712749348967660}
-  - component: {fileID: 114143998627245468}
   - component: {fileID: 114186652162752526}
   m_Layer: 5
   m_Name: Hud
@@ -559,20 +558,6 @@ MonoBehaviour:
   m_Text: 'TURRET
 
     DMG 10'
---- !u!114 &114143998627245468
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1212550166793832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98edd90223f69a246ab5e0023079e9e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TrapPrefab: {fileID: 114417857696877612, guid: 513c5c8a2c14e484eab3c788e7ceeb81,
-    type: 2}
-  SpawnPoint: {fileID: 0}
 --- !u!114 &114186652162752526
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -586,16 +571,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentState: 0
   Coins: 10
-  Health: 5
-  HamburgersCount: 5
+  Health: 146
   TrapPositionsParent: {fileID: 0}
   TowerPositionsParent: {fileID: 0}
   TrapPrefab: {fileID: 1038839701450468, guid: a9286dadf2a12cb41b4741a72082e0ce, type: 2}
+  TurretPrefab: {fileID: 1950983038022906, guid: 99ef0e5e5ab94b548866c6201b219d56,
+    type: 2}
   enemyWaves: {fileID: 0}
   BuildingsPanel: {fileID: 1548869046645852}
   BuildingsButton: {fileID: 1402564232960692}
   TimerText: {fileID: 114800477469513912}
   CoinsText: {fileID: 114059894227395634}
+  HealthText: {fileID: 114730596744307582}
 --- !u!114 &114208008606123480
 MonoBehaviour:
   m_ObjectHideFlags: 1
