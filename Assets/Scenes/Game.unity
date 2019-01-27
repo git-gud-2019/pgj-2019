@@ -2811,7 +2811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef1e002dd68958b4ca313678a1c436f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: 100
+  hud: {fileID: 851407192}
 --- !u!4 &803102055 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4109461829327636, guid: 865dece1630e40a47b8d6697197a4ee9,

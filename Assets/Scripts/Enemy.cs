@@ -39,7 +39,8 @@ public class Enemy : MonoBehaviour
 
         if (!path.Any())
         {
-            var player = GameObject.Find("Main Camera").GetComponent<Player>().playerHealth -= enemyDamage;
+            var player = GameObject.Find("Main Camera").GetComponent<Player>();
+                player.DoDmg( enemyDamage);
             GameObject.FindGameObjectWithTag("EnemySpawn").GetComponent<EnemyWaves>().KillEnemy();
             Destroy(gameObject);
         }
