@@ -275,10 +275,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Parentpath: {fileID: 0}
+  Hud: {fileID: 1212550166793832, guid: e27714b29b8976c44b5f6f5135554cb5, type: 2}
   health: 100
+  InitialHealth: 0
   healthUI: {fileID: 114464905449815416}
   speed: 0
   enemyDamage: 15
+  CoinDropNumber: 1
 --- !u!212 &212215842993195778
 SpriteRenderer:
   m_ObjectHideFlags: 1

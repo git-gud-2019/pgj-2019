@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Enemy : MonoBehaviour
 {
     public GameObject Parentpath;
+    public GameObject Hud;
     List<GameObject> path;
     public float health = 100;
     public float InitialHealth;
@@ -14,6 +15,7 @@ public class Enemy : MonoBehaviour
     public float speed;
     public int enemyDamage;
     private float initialSpeed;
+    public int CoinDropNumber = 1;
 
     private void Start()
     {
@@ -40,8 +42,7 @@ public class Enemy : MonoBehaviour
 
         if (health <= 0)
         {
-            GameObject.FindGameObjectWithTag("EnemySpawn").GetComponent<EnemyWaves>().KillEnemy();
-            Destroy(gameObject);
+            Die();
         }
 
         if (!path.Any())
@@ -51,6 +52,18 @@ public class Enemy : MonoBehaviour
             GameObject.FindGameObjectWithTag("EnemySpawn").GetComponent<EnemyWaves>().KillEnemy();
             Destroy(gameObject);
         }
+    }
+
+    private void Die()
+    {
+        GameObject.FindGameObjectWithTag("EnemySpawn").GetComponent<EnemyWaves>().KillEnemy();
+        Destroy(gameObject);
+        DropCoin();
+    }
+
+    private void DropCoin()
+    {
+        Hud.GetComponent<HUD>().ChangeCoins(CoinDropNumber);
     }
 
     IEnumerator GoOnPath()
