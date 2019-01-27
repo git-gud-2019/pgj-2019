@@ -1,8 +1,10 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
     private string EnemyTag = "Enemy";
+    private string EnemyTagTwo = "EnemyFlipAll";
     private Transform Target;
     public GameObject BulletPrefab;
     public Transform FirePoint;
@@ -19,7 +21,16 @@ public class Turret : MonoBehaviour
 
     void UpdateTarget()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag(EnemyTag);
+        List<GameObject> enemies = new List<GameObject>();
+        foreach (var firstTag in GameObject.FindGameObjectsWithTag(EnemyTag))
+        {
+            enemies.Add(firstTag);
+        }
+        foreach (var secondTag in GameObject.FindGameObjectsWithTag(EnemyTagTwo))
+        {
+            enemies.Add(secondTag);
+        }
+
 
         float shortestDistance = Mathf.Infinity;
         GameObject nearestEnemy = null;
