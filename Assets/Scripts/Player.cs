@@ -2,19 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour {
-
-    private int playerHealth = 100;
+public class Player : MonoBehaviour
+{
 
     public HUD hud;
 
     public void DoDmg(int dmg)
     {
-        playerHealth -= dmg;
+        hud.Health -= dmg;
+        hud.UpdateHealth();
 
-        Debug.Log("Player health:" + playerHealth);
-
-        if (playerHealth <= 0)
+        if (hud.Health <= 0)
         {
             GameOver();
         }
