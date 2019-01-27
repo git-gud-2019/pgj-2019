@@ -179,7 +179,7 @@ public class HUD : MonoBehaviour, ClicableMapObject.ClicableMapObjectListener
 
     public void UpdateHealth()
     {
-        HealthText.text = Health.ToString();
+        HealthText.text = Health < 0 ? "0" : Health.ToString();
     }
 
     public void BuildOnPosition(ClicableMapObject obj)
