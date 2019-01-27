@@ -537,7 +537,7 @@ MonoBehaviour:
   HamburgersCount: 5
   TrapPositionsParent: {fileID: 0}
   TowerPositionsParent: {fileID: 0}
-  TrapPrefab: {fileID: 0}
+  TrapPrefab: {fileID: 1038839701450468, guid: a9286dadf2a12cb41b4741a72082e0ce, type: 2}
   enemyWaves: {fileID: 0}
   BuildingsPanel: {fileID: 1548869046645852}
   BuildingsButton: {fileID: 1402564232960692}
