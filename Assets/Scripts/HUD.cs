@@ -188,7 +188,7 @@ public class HUD : MonoBehaviour, ClicableMapObject.ClicableMapObjectListener
                     Instantiate(
                         TurretPrefab,
                         new Vector3(obj.transform.position.x, obj.transform.position.y, 0f),
-                        Quaternion.identity
+                        TurretPrefab.transform.rotation
                     );
                     break;
             }
