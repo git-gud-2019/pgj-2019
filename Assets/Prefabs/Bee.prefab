@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 50831521180421918}
   - component: {fileID: 114547472216649076}
   - component: {fileID: 82754013313350648}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bee
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 224822432102866676}
   - component: {fileID: 222687514001638454}
   - component: {fileID: 114114381532083782}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Bakground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
