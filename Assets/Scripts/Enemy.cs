@@ -12,9 +12,12 @@ public class Enemy : MonoBehaviour
     public Image healthUI;
     public float speed;
     public int enemyDamage;
+    private float initialSpeed;
 
     private void Start()
     {
+        initialSpeed = speed;
+
         path = new List<GameObject>();
         foreach (Transform child in Parentpath.transform)
         {
@@ -86,13 +89,17 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("Traps"))
+        if (collision.gameObject.CompareTag("Traps"))
         {
-            health -= 30;
+            health -= collision.gameObject.GetComponent<TrapBehaviour>().trapDamage;
             healthUI.fillAmount -= 0.3f;
-            Destroy(collision.gameObject);
+            speed /= 2;
+            if (speed <= initialSpeed / 2)
+            {
+                speed = initialSpeed / 2;
+            }
         }
     }
 }
