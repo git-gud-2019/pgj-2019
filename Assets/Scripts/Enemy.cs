@@ -8,7 +8,8 @@ public class Enemy : MonoBehaviour
 {
     public GameObject Parentpath;
     List<GameObject> path;
-    public int health = 100;
+    public float health = 100;
+    public float InitialHealth;
     public Image healthUI;
     public float speed;
     public int enemyDamage;
@@ -17,24 +18,27 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         initialSpeed = speed;
+        InitialHealth = health;
 
         path = new List<GameObject>();
         foreach (Transform child in Parentpath.transform)
         {
             path.Add(child.gameObject);
         }
+
         StartCoroutine(GoOnPath());
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             health -= 10;
-            healthUI.fillAmount -= 0.1f;
         }
 
-        if(health <= 0)
+        UpdateHealthUI();
+
+        if (health <= 0)
         {
             GameObject.FindGameObjectWithTag("EnemySpawn").GetComponent<EnemyWaves>().KillEnemy();
             Destroy(gameObject);
@@ -43,7 +47,7 @@ public class Enemy : MonoBehaviour
         if (!path.Any())
         {
             var player = GameObject.Find("Main Camera").GetComponent<Player>();
-                player.DoDmg( enemyDamage);
+            player.DoDmg(enemyDamage);
             GameObject.FindGameObjectWithTag("EnemySpawn").GetComponent<EnemyWaves>().KillEnemy();
             Destroy(gameObject);
         }
@@ -57,7 +61,6 @@ public class Enemy : MonoBehaviour
             {
                 if (transform.position.y == path[0].transform.position.y)
                 {
-
                     if (transform.position.x < path[0].transform.position.x)
                     {
                         transform.rotation = Quaternion.Euler(Vector3.forward * 270);
@@ -79,11 +82,14 @@ public class Enemy : MonoBehaviour
                     }
                 }
             }
-            transform.position = Vector2.MoveTowards(transform.position, path[0].transform.position, speed * Time.deltaTime);
+
+            transform.position =
+                Vector2.MoveTowards(transform.position, path[0].transform.position, speed * Time.deltaTime);
             if (transform.position == path[0].transform.position)
             {
                 path.RemoveAt(0);
             }
+
             yield return null;
             StartCoroutine(GoOnPath());
         }
@@ -94,12 +100,21 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.CompareTag("Traps"))
         {
             health -= collision.gameObject.GetComponent<TrapBehaviour>().trapDamage;
-            healthUI.fillAmount -= 0.3f;
             speed /= 2;
             if (speed <= initialSpeed / 2)
             {
                 speed = initialSpeed / 2;
             }
         }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
+    }
+
+    private void UpdateHealthUI()
+    {
+        healthUI.fillAmount = health / InitialHealth;
     }
 }
