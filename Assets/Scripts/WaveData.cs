@@ -10,30 +10,37 @@ public class WaveData : ScriptableObject
     public Transform[] enemies;
     public float spawnInterval;
     public float timeBetweenWaves;
-    private GameObject pathParent;
+    private Queue<GameObject> pathParent = new Queue<GameObject>();
     private List<GameObject> path;
     private GameObject spawner;
 
     private int enemiesAlive;
     private int enemiesRemaining;
 
+    private void OnEnable()
+    {
+        for (var i = 0; i < GameObject.Find("Enemies").transform.childCount; i++)
+        {
+            pathParent.Enqueue(GameObject.Find("Enemies").transform.GetChild(i).gameObject);
+        }
+        spawner = GameObject.FindGameObjectWithTag("EnemySpawn");
+    }
+
     public IEnumerator Wave(int waveCount, int enemiesPerWave, float interval)
     {
         enemiesAlive = 0;
         enemiesRemaining = waveCount * enemiesPerWave;
 
-        pathParent = GameObject.FindGameObjectWithTag("Path");
-        spawner = GameObject.FindGameObjectWithTag("EnemySpawn");
-
         var currentWave = 0;
+        GameObject temp = pathParent.Dequeue();
 
-        for(var j = 0; j < waveCount; j++) {
+        for (var j = 0; j < waveCount; j++) {
 
             for (var i = 0; i < enemiesPerWave; i++)
             {
                 var enemyGO = enemies[Random.Range(0, 8)];
                 var spawnedEnemy = Instantiate(enemyGO, spawner.transform.position, Quaternion.identity);
-                spawnedEnemy.GetComponent<Enemy>().Parentpath = pathParent;
+                spawnedEnemy.GetComponent<Enemy>().Parentpath = temp;
                 spawnedEnemy.GetComponent<Enemy>().speed = 3f;
                 enemiesAlive++;
                 enemiesRemaining--;
