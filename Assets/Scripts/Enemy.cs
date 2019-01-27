@@ -17,8 +17,12 @@ public class Enemy : MonoBehaviour
     private float initialSpeed;
     public int CoinDropNumber = 1;
 
+    public Text damageRecievedText;
+
     private void Start()
     {
+        damageRecievedText.text = "";
+
         initialSpeed = speed;
         InitialHealth = health;
 
@@ -33,11 +37,6 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            health -= 10;
-        }
-
         UpdateHealthUI();
 
         if (health <= 0)
@@ -123,11 +122,28 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        health -= damage;
+        var realDamage = CalculateDamage(damage);
+
+        DisplayDamage(realDamage);
+        health -= realDamage;
     }
 
     private void UpdateHealthUI()
     {
         healthUI.fillAmount = health / InitialHealth;
+    }
+
+    private float CalculateDamage(float damage)
+    {
+        return (damage + (Random.Range(damage * 0.08f, -damage * 0.08f)));
+    }
+
+    private void DisplayDamage(float damage)
+    {
+        damageRecievedText.gameObject.GetComponent<DestroyDamageText>().time = 0f;
+        //damageRecievedText.text = "-" + Mathf.RoundToInt(damage).ToString();
+
+        damageRecievedText.text = string.Format("-{0}", (int)damage);
+
     }
 }
