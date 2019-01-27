@@ -24,9 +24,9 @@ public class SplashScreen : MonoBehaviour {
         var curveAmount = fadeOutCurve.Evaluate(curveTime);
         while (curveAmount > 0.0f)
         {
-            curveTime -= Time.deltaTime * 3;
+            curveTime -= Time.deltaTime * 1;
             curveAmount = fadeOutCurve.Evaluate(curveTime);
-            temp.a = curveAmount * 255;
+            temp.a = curveAmount;
             GetComponent<Image>().color = temp;
             yield return null;
         }
