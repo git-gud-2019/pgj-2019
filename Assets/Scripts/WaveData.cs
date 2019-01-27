@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "WaveData", menuName = "Waves/Data", order = 1)]
@@ -17,23 +18,23 @@ public class WaveData : ScriptableObject
     private int enemiesAlive;
     private int enemiesRemaining;
 
-    private void OnEnable()
+
+    public IEnumerator Wave(int waveCount, int enemiesPerWave, float interval)
     {
         for (var i = 0; i < GameObject.Find("Enemies").transform.childCount; i++)
         {
             pathParent.Enqueue(GameObject.Find("Enemies").transform.GetChild(i).gameObject);
         }
         spawner = GameObject.FindGameObjectWithTag("EnemySpawn");
-    }
 
-    public IEnumerator Wave(int waveCount, int enemiesPerWave, float interval)
-    {
         enemiesAlive = 0;
         enemiesRemaining = waveCount * enemiesPerWave;
 
         var currentWave = 0;
+
         GameObject temp = pathParent.Dequeue();
         spawner.transform.position = temp.transform.GetChild(0).position;
+
         for (var j = 0; j < waveCount; j++) {
 
             for (var i = 0; i < enemiesPerWave; i++)
