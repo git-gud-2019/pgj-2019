@@ -1,20 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class HUD : MonoBehaviour, ClicableMapObject.ClicableMapObjectListener
 {
-    private const int TRAP_PRICE = 5;
-    private const int TOWER_PRICE = 3;
+    private const int TRAP_PRICE = 3;
+    private const int TOWER_PRICE = 5;
 
     public enum State
     {
         PREPARING,
-        BUILD_TRAP,
-        BUILD_TOWER,
-        UNDER_ATTACK
+        UNDER_ATTACK,
+        GAME_OVER
     }
+
 
     public State CurrentState = State.PREPARING;
     public int Coins = 10;
@@ -25,6 +23,8 @@ public class HUD : MonoBehaviour, ClicableMapObject.ClicableMapObjectListener
     public GameObject TrapPositionsParent;
     public GameObject TowerPositionsParent;
 
+    public GameObject TrapPrefab;
+
     public EnemyWaves enemyWaves;
 
     public GameObject BuildingsPanel;
@@ -34,11 +34,11 @@ public class HUD : MonoBehaviour, ClicableMapObject.ClicableMapObjectListener
 
 
 
-    private static string TOWER_POSITION_TAG = "TowerPos";
-    private static string TRAP_POSITION_TAG = "TrapPos";
+    private const string TOWER_POSITION_TAG = "TowerPos";
+    private const string TRAP_POSITION_TAG = "TrapPos";
 
     private int waveNumber = 0;
-    private float timeToNextWave = 10;
+    private float timeToNextWave = 20;
 
     void Start()
     {
@@ -60,8 +60,6 @@ public class HUD : MonoBehaviour, ClicableMapObject.ClicableMapObjectListener
             child.SetListener(this);
         }
 
-
-
         ChangeState(State.PREPARING);
 
     }
@@ -74,17 +72,8 @@ public class HUD : MonoBehaviour, ClicableMapObject.ClicableMapObjectListener
             case State.PREPARING:
                 BuildingsButton.SetActive(true);
                 waveNumber += 1;
-                timeToNextWave = 10;
+                timeToNextWave = 20;
 
-                break;
-
-            case State.BUILD_TOWER:
-                TowerPositionsParent.SetActive(true);
-                break;
-
-            case State.BUILD_TRAP:
-
-                TrapPositionsParent.SetActive(true);
                 break;
             case State.UNDER_ATTACK:
                 enemyWaves.StartWave(1 + waveNumber, 3, 5);
@@ -94,10 +83,11 @@ public class HUD : MonoBehaviour, ClicableMapObject.ClicableMapObjectListener
 
 
                 TimerText.text = string.Format("Wave: {0}", waveNumber);
-                //ChangeCoins(3);
-                //ChangeState(State.PREPARING);
                 BuildingsPanel.gameObject.SetActive(false);
 
+                break;
+            case State.GAME_OVER:
+                TimerText.text = string.Format("");
                 break;
         }
 
@@ -105,7 +95,12 @@ public class HUD : MonoBehaviour, ClicableMapObject.ClicableMapObjectListener
 
     void LateUpdate()
     {
-        if (CurrentState != State.UNDER_ATTACK)
+        if (CurrentState == State.GAME_OVER)
+        {
+            return;
+        }
+
+        if (CurrentState == State.PREPARING)
         {
             var minutes = timeToNextWave / 60; //Divide the guiTime by sixty to get the minutes.
             var seconds = timeToNextWave % 60; //Use the euclidean division for the seconds.
@@ -130,14 +125,18 @@ public class HUD : MonoBehaviour, ClicableMapObject.ClicableMapObjectListener
         switch (buildingId)
         {
             case 0:
-                if (Coins >= TRAP_PRICE)
-                    ChangeState(State.BUILD_TRAP);
+                if (Coins < TRAP_PRICE)
+                {
+                    break;
+                }
                 ShowHideBuildings();
                 TrapPositionsParent.SetActive(true);
                 break;
             case 1:
-                if (Coins >= TOWER_PRICE)
-                    ChangeState(State.BUILD_TOWER);
+                if (Coins < TOWER_PRICE)
+                {
+                    break;
+                }
                 ShowHideBuildings();
                 TowerPositionsParent.SetActive(true);
                 break;
@@ -160,15 +159,25 @@ public class HUD : MonoBehaviour, ClicableMapObject.ClicableMapObjectListener
         TowerPositionsParent.SetActive(false);
         TrapPositionsParent.SetActive(false);
 
-        if (CurrentState == State.BUILD_TRAP && obj.tag == TRAP_POSITION_TAG)
+        if (CurrentState == State.PREPARING)
         {
-            ChangeCoins(-TRAP_PRICE);
+            switch (obj.tag)
+            {
+                case TRAP_POSITION_TAG:
+                    ChangeCoins(-TRAP_PRICE);
 
-            //build prap on position
-        }
-        else if (CurrentState == State.BUILD_TOWER && obj.tag == TOWER_POSITION_TAG)
-        {
-            ChangeCoins(-TOWER_PRICE);
+                    Instantiate(
+                        TrapPrefab,
+                        new Vector3(obj.transform.position.x, obj.transform.position.y, 0f),
+                        Quaternion.identity
+                    );
+
+                    break;
+                case TOWER_POSITION_TAG:
+                    ChangeCoins(-TOWER_PRICE);
+                    break;
+            }
+
         }
     }
 }
