@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-    public int playerHealth = 100;
+    private int playerHealth = 100;
 
-    private void Update()
+    public HUD hud;
+
+    public void DoDmg(int dmg)
     {
+        playerHealth -= dmg;
+
         Debug.Log("Player health:" + playerHealth);
 
         if (playerHealth <= 0)
@@ -18,6 +22,6 @@ public class Player : MonoBehaviour {
 
     void GameOver()
     {
-
+        hud.ChangeState(HUD.State.GAME_OVER);
     }
 }

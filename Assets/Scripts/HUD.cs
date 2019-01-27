@@ -66,6 +66,10 @@ public class HUD : MonoBehaviour, ClicableMapObject.ClicableMapObjectListener
 
     public void ChangeState(State state)
     {
+        if (CurrentState == State.GAME_OVER)
+        {
+            return;
+        }
         CurrentState = state;
         switch (state)
         {
@@ -87,7 +91,8 @@ public class HUD : MonoBehaviour, ClicableMapObject.ClicableMapObjectListener
 
                 break;
             case State.GAME_OVER:
-                TimerText.text = string.Format("");
+                TimerText.text = string.Format("Game Over");
+                //TODO: show game over image
                 break;
         }
 
