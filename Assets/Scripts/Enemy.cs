@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class Enemy : MonoBehaviour
 {
     public GameObject Parentpath;
-    public GameObject Hud;
     List<GameObject> path;
     public float health = 100;
     public float InitialHealth;
@@ -62,7 +61,7 @@ public class Enemy : MonoBehaviour
 
     private void DropCoin()
     {
-        Hud.GetComponent<HUD>().ChangeCoins(CoinDropNumber);
+        GameObject.Find("Hud").GetComponent<HUD>().ChangeCoins(CoinDropNumber);
     }
 
     IEnumerator GoOnPath()
