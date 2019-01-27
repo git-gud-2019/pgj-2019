@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class HUD : MonoBehaviour, ClicableMapObject.ClicableMapObjectListener
 {
     private const int TRAP_PRICE = 3;
     private const int TOWER_PRICE = 5;
-
+    public GameObject escapeMenu;
     public enum State
     {
         PREPARING,
@@ -100,6 +101,12 @@ public class HUD : MonoBehaviour, ClicableMapObject.ClicableMapObjectListener
 
     void LateUpdate()
     {
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            escapeMenu.SetActive(!escapeMenu.activeSelf);
+        }
+
         if (CurrentState == State.GAME_OVER)
         {
             return;
@@ -151,6 +158,17 @@ public class HUD : MonoBehaviour, ClicableMapObject.ClicableMapObjectListener
     public void ShowHideBuildings()
     {
         BuildingsPanel.gameObject.SetActive(!BuildingsPanel.gameObject.activeSelf);
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
+    public void RestartScene()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
     }
 
     public void ChangeCoins(int value)
