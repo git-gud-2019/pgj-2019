@@ -8428,6 +8428,11 @@ Prefab:
       propertyPath: hud
       value: 
       objectReference: {fileID: 2077471375}
+    - target: {fileID: 82422597838400064, guid: f1a0fa7513e8d4c4c95c0eeab00048d7,
+        type: 2}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1a0fa7513e8d4c4c95c0eeab00048d7, type: 2}
   m_IsPrefabAsset: 0
