@@ -1,26 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class TrapCollision : MonoBehaviour {
-
-	void Start () {
-		
-	}
-	
-	void Update () {
-		
-	}
-
+public class TrapCollision : MonoBehaviour
+{
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Traps")
+        if (collision.gameObject.CompareTag("Traps"))
         {
-            var trapGO = collision.gameObject;
-            this.gameObject.GetComponent<Enemy>().health -= trapGO.GetComponent<TrapBehaviour>().trapDamage;
-            this.gameObject.GetComponent<Enemy>().healthUI.fillAmount -= 0.3f;
-            trapGO.GetComponent<TrapBehaviour>().trapLives--;
+            var trapGameObject = collision.gameObject;
+
+            gameObject.GetComponent<Enemy>().TakeDamage(trapGameObject.GetComponent<TrapBehaviour>().trapDamage);
+            trapGameObject.GetComponent<TrapBehaviour>().trapLives--;
         }
     }
-
 }
