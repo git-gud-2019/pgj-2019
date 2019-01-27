@@ -76,7 +76,7 @@ public class HUD : MonoBehaviour, ClicableMapObject.ClicableMapObjectListener
             case State.PREPARING:
                 BuildingsButton.SetActive(true);
                 waveNumber += 1;
-                timeToNextWave = 20;
+                timeToNextWave = 5;
 
                 break;
             case State.UNDER_ATTACK:
