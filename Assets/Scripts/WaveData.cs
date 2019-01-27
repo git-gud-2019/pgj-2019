@@ -33,7 +33,7 @@ public class WaveData : ScriptableObject
 
         var currentWave = 0;
         GameObject temp = pathParent.Dequeue();
-
+        spawner.transform.position = temp.transform.GetChild(0).position;
         for (var j = 0; j < waveCount; j++) {
 
             for (var i = 0; i < enemiesPerWave; i++)
