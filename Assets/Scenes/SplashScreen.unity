@@ -402,6 +402,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   referenceScript: {fileID: 817267644}
+  otherProfile: {fileID: 11400000, guid: bfa7358e8cce98646b4205f1bac7c87f, type: 2}
 --- !u!1 &1467129800
 GameObject:
   m_ObjectHideFlags: 0
