@@ -915,7 +915,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   escapeMenu: {fileID: 1188971449957844}
   CurrentState: 0
-  Coins: 10
+  Coins: 100
   Health: 146
   TrapPositionsParent: {fileID: 0}
   TowerPositionsParent: {fileID: 0}

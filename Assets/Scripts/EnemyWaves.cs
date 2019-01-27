@@ -26,7 +26,7 @@ public class EnemyWaves : MonoBehaviour {
     {
         Debug.Log("Kill Enemy");
         waveData.KillEnemy();
-        GetComponent<AudioSource>().PlayOneShot(DieSounds[Random.Range(0, DieSounds.Length-1)], 1);
+        GetComponent<AudioSource>().PlayOneShot(DieSounds[Random.Range(0, DieSounds.Length)], 1);
     }
 
 }

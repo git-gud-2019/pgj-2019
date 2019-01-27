@@ -16,7 +16,7 @@ public class HUD : MonoBehaviour, ClicableMapObject.ClicableMapObjectListener
 
 
     public State CurrentState = State.PREPARING;
-    public int Coins = 10;
+    public int Coins = 100;
     public int Health = 100;
 
     public GameObject TrapPositionsParent;
