@@ -9,6 +9,8 @@ public class Turret : MonoBehaviour
     public GameObject BulletPrefab;
     public Transform FirePoint;
 
+    public AudioClip ShotSound;
+
     [Header("Attributes")] public float Range = 2f;
     public float FireRate = 12f;
     public float FireCountdown = 0f;
@@ -92,6 +94,7 @@ public class Turret : MonoBehaviour
     {
         GameObject bulletGo = Instantiate(BulletPrefab, FirePoint.position, FirePoint.rotation);
         Bullet bullet = bulletGo.GetComponent<Bullet>();
+        GetComponent<AudioSource>().PlayOneShot(ShotSound, 1);
 
         if (bullet != null)
         {
